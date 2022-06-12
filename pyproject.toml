@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "line-fastapi-echo"
+version = "0.1.0"
+description = "The bot that will echo to the message"
+authors = ["Chatchavit Nitipongpun <bentocast@hotmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+line-bot-sdk = "^2.2.1"
+fastapi = "^0.78.0"
+unicorn = "^1.0.3"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
