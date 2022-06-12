@@ -41,9 +41,7 @@ if channel_access_token is None:
     sys.exit(1)
 
 app = FastAPI()
-session = aiohttp.ClientSession()
-async_http_client = AiohttpAsyncHttpClient(session)
-line_bot_api = AsyncLineBotApi(channel_access_token, async_http_client)
+
 parser = WebhookParser(channel_secret)
 
 
@@ -65,7 +63,11 @@ async def handle_callback(request: Request):
             continue
         if not isinstance(event.message, TextMessage):
             continue
-
+        
+        print(event.message.text)
+        session = aiohttp.ClientSession()
+        async_http_client = AiohttpAsyncHttpClient(session)
+        line_bot_api = AsyncLineBotApi(channel_access_token, async_http_client)
         await line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=event.message.text)
